@@ -1,5 +1,4 @@
-.section {
-  height: 200px;
-  background: grey; }
+.active {
+  opacity: .7; }
 
 /*# sourceMappingURL=style.css.map */

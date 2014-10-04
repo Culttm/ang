@@ -1,4 +1,5 @@
-.section{
- 	height: 200px;
- 	background: grey;
-}
+@import 'compass';
+
+.active{
+	opacity: .7;
+ }

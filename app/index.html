@@ -19,14 +19,14 @@
 	</head>
 	<body>
 		<h1 class="text-center">Frent - End</h1>
-		<div ng-controller="StoreController as items"  class="container">
+		<div ng-controller="ListController as items"  class="container">
 			<div ng-repeat="element in items.elements | limitTo:4" id="{{ element.id }}" class="item">
 	 			<div class="row">
-	 				<div ng-show="element.images.length" class="col-sm-3">
-	 					<img ng-src="{{ element.images[0] }}" alt="{{ element.name }}" class="img-responsive">
+	 				<div ng-controller="ThumbsController as thumbItem" ng-show="element.images.length" class="col-sm-3">
+	 					<img ng-src="{{ element.images[thumbItem.index] }}" alt="{{ element.name }}" class="img-responsive">
 	 					<div class="row">
 	 						<div ng-repeat="thumb in element.images" class="col-sm-4">
-	 							<img ng-src="{{thumb}}"  class="img-responsive">
+	 							<img ng-src="{{thumb}}" ng-class="{active:thumbItem.setCurrent($index)}" ng-click="thumbItem.setSrc($index)"  class="img-responsive">
 	 						</div>
 	 					</div>
 	 				</div>
@@ -37,7 +37,7 @@
 	 					<a href="" class="btn btn-xs btn-primary">Подробнее</a>
 					</div>
 					<div class="col-sm-2 text-right">
-						 <div class="rating"> {{ element.val | currency: '$'}}</div>
+						 <div class="rating"> {{ element.val | currency: '!!! '}}</div>
 					</div>
 				</div>
 				<br>	

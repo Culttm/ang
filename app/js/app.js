@@ -1,5 +1,6 @@
 (function(){
 
+	'use strict';
 
 	var app = angular.module('app', []);
 
@@ -53,11 +54,22 @@
 		] 
 
 
-		app.controller('StoreController', function(){
+		app.controller('ListController', function(){
 			this.elements = data;
-		})
+		});
 
 
+		app.controller('ThumbsController', function(){
+			this.index = 0;
+			this.setSrc = function(i){
+				if(this.index !== i){
+					this.index = i;
+				};
+			};			
 
+			this.setCurrent = function(i){
+				return this.index == i;
+			};
+		});
 
 })();
