@@ -36,7 +36,13 @@ gulp.task('compass', function () {
 
 // Html
 gulp.task('html', function() {
-	gulp.src('app/*.html')
+  gulp.src('app/*.html')
+    .pipe(connect.reload())
+});
+
+// Js
+gulp.task('js', function() {
+	gulp.src('app/js/*.js')
 		.pipe(connect.reload())
 });
 
@@ -44,9 +50,10 @@ gulp.task('html', function() {
 // Watch
 gulp.task('watch',function(){
 	gulp.watch('app/*.html', ['html'])
-	gulp.watch('app/sass/*.scss', ['compass'])
+  gulp.watch('app/sass/*.scss', ['compass'])
+	gulp.watch('app/js/*.js', ['js'])
 });
 
 
 // Default
-gulp.task('default', ['connect', 'watch', 'html', 'compass']);
+gulp.task('default', ['connect', 'watch', 'html', 'compass', 'js']);

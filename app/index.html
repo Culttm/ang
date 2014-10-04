@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<htm ng-app="app" lang="ru">
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,23 +17,30 @@
 			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 		<![endif]-->
 	</head>
-	<body>
-		<h1 class="text-center">Index</h1>
-		<div class="container">
+	<body >
+		<h1 class="text-center">Store</h1>
+		<div   ng-controller="StoreController as item"  class="container">
+			<hr>
 			<div class="row">
-				<div class="col-md-4">
-					<div class="section"></div>
-					<hr>
-				</div>					
-				<div class="col-md-8">
-					<div class="section"></div>
-					<hr>
-				</div>				
+				<div class="col-sm-8">
+ 					<div><b>{{ item.element.name }}</b></div>
+ 					<div>ID: <small>{{item.element.id}}</small></div> 
+				</div>
+				<div class="col-sm-4 text-right">
+					 <div class="price"> {{item.element.price}} $</div>
+				</div>
 			</div>
 		</div>
+
 		<!-- jQuery -->
 		<script src="vendors/jquery/dist/jquery.min.js"></script>
 		<!-- Bootstrap JavaScript -->
 		<script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+
+		<!-- Angular -->
+		<script src="vendors/angular/angular.min.js"></script>
+
+		<!-- App -->
+		<script src="js/app.js"></script>
 	</body>
 </html>
