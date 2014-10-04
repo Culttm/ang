@@ -17,18 +17,25 @@
 			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 		<![endif]-->
 	</head>
-	<body >
-		<h1 class="text-center">Store</h1>
-		<div   ng-controller="StoreController as item"  class="container">
-			<hr>
-			<div class="row">
-				<div class="col-sm-8">
- 					<div><b>{{ item.element.name }}</b></div>
- 					<div>ID: <small>{{item.element.id}}</small></div> 
-				</div>
-				<div class="col-sm-4 text-right">
-					 <div class="price"> {{item.element.price}} $</div>
-				</div>
+	<body>
+		<h1 class="text-center">Frent - End</h1>
+		<div ng-controller="StoreController as items"  class="container">
+			<div ng-repeat="element in items.elements | limitTo:3" id="{{ element.id }}" class="item">
+	 			<div class="row">
+	 				<div class="col-sm-2">
+	 					<img ng-src="{{ element.icon }}" ng-alt="{{ element.name }}" class="img-responsive">
+	 				</div>
+					<div class="col-sm-8">
+	 					<h4><a href="">{{ element.name | uppercase}}</a></h4>
+	 					<div>{{ element.description }}</div>
+	 					<br>
+	 					<a href="" class="btn btn-xs btn-primary">Подробнее</a>
+					</div>
+					<div class="col-sm-2 text-right">
+						 <div class="rating"> {{ element.val | currency: '$'}}</div>
+					</div>
+				</div>	
+				<hr>			
 			</div>
 		</div>
 
