@@ -5,6 +5,10 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Title Page</title>
+		
+
+		<link href='http://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 
 		<!-- Bootstrap CSS -->
 		<link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -18,34 +22,88 @@
 		<![endif]-->
 	</head>
 	<body>
-		<h1 class="text-center">Frent - End</h1>
-		<div ng-controller="ListController as items"  class="container">
-			<div ng-repeat="element in items.elements | limitTo:4" id="{{ element.id }}" class="item">
+		<h1 class="text-center">Test Json Data</h1>
+		<div ng-controller="ListController"  class="container items">
+			<div ng-repeat="element in elements" id="{{ element._id }}" class="item">
 	 			<div class="row">
-	 				<div ng-controller="ThumbsController as thumbItem" ng-show="element.images.length" class="col-sm-3">
-	 					<img ng-src="{{ element.images[thumbItem.index] }}" alt="{{ element.name }}" class="img-responsive">
+	 				<div class="col-sm-2">
+	 					<img ng-src="{{ element.picture}}" alt="{{ element.name }}" class="img-responsive">					 					
+	 					<hr>
 	 					<div class="row">
-	 						<div ng-repeat="thumb in element.images" class="col-sm-4">
-	 							<img ng-src="{{thumb}}" ng-class="{active:thumbItem.setCurrent($index)}" ng-click="thumbItem.setSrc($index)"  class="img-responsive">
+	 						<div class="col-md-6">
+	 							{{ element.balance}}
+	 						</div>
+	 					</div>
+	 					<hr>	
+	 					<div class="row">	
+	 						<div class="col-md-12">
+	 							{{ element.company}}
+	 						</div>
+	 					</div>	 					
+	 					<hr>
+	 					<div class="row">
+	 						<div class="col-md-12">
+	 							{{ element.gender}}
+	 						</div>
+	 					</div>
+	 					<hr>	 					
+	 					<div class="row">
+	 						<div class="col-md-6">
+	 							{{ element.age}}
+	 						</div>
+	 					</div>
+	 					<hr>	
+	 					<div class="row">	
+	 						<div class="col-md-12">
+	 							{{ element.eyeColor}}
 	 						</div>
 	 					</div>
 	 				</div>
-					<div ng-class="element.images.length ? 'col-sm-7' : 'col-sm-10'">
-	 					<h4><a href="">{{ element.name | uppercase}}</a></h4>
-	 					<div>{{ element.description }}</div>
+					<div class="col-sm-10">
+	 					<div class="row">
+	 						<div class="col-sm-8">
+	 							<h3 class="title">{{ element.name | uppercase}}</h3>
+	 						</div>
+	 						<div class="col-sm-4 text-right">
+	 							<small><b>Registered: </b> {{ element.registered }}</small> 
+	 							<br>
+	 							<b>Email: </b><a href="mailto:{{ element.email}}">{{ element.email}}</a>
+	 							<br>
+	 							<b>Phone: </b>{{ element.phone}}
+	 						</div>
+	 					</div>
 	 					<br>
-	 					<a href="" class="btn btn-xs btn-primary">Подробнее</a>
-					</div>
-					<div class="col-sm-2 text-right">
-						 <div class="rating"> {{ element.val | currency: '!!! '}}</div>
-					</div>
+	 					<h4>About</h4>	 
+	 					<p>{{ element.about }}</p>
+	 					<hr>
+	 					<div class="tags">
+	 					{{element.tags}}
+	 						<!-- <b ng-repeat="tag in element.tags">	{{ tag }} </b> -->
+ 
+	 					</div>
+	 					<h4>Friends</h4>	 					
+	 					<ul class="tags">
+	 						<li id="{{ friend.id }}" ng-repeat="friend in element.friends">	{{ friend.name }} </li>
+	 					</ul>	
+	 					<br> 					
+	 					<hr>					
+	 					<h4>Greeting</h4>	 					
+	 					{{element.greeting}}	 					
+	 					<br> 					
+	 					<hr> 					
+	 					<h4>Favorite Fruit</h4>	 					
+	 					{{element.favoriteFruit}}	 					
+	 					<br> 					
+	 					<hr> 					
+	 					<h4>Location</h4>	 					
+	 					latitude : {{element.latitude}} <br>
+	 					longitude : {{element.longitude}} 
+ 					</div>
 				</div>
-				<br>	
-				<hr>
-				<br>			
+			
 			</div>
 		</div>
-
+		<div class="loader" ng-show="loader"><div class="loader-content">Loading...</div></div>
 		<!-- jQuery -->
 		<script src="vendors/jquery/dist/jquery.min.js"></script>
 		<!-- Bootstrap JavaScript -->

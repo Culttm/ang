@@ -1,75 +1,36 @@
 (function(){
 
 	'use strict';
-
+	
 	var app = angular.module('app', []);
 
-		var data =[
-			{
-				name : 'Супер-героический JavaScript',
-				id : 102,
-				val : 5,
-				disable : true,
-				images:[
-					'images/icons/like10.png',
-					'images/icons/like9.png',
-					'images/icons/ok5.png'
-				],
-				description : 'Первая и вторая линия обороны на восточной границе Украины готовы на 80 процентов. Об этом заявил президент Украины Петр Порошенко во время посещения полигона сухопутных войск ВСУ в Житомирской области. По его словам, на границе успешно идет строительство блиндажей и фортикационных сооружений'
-			},
-			{
-				name : 'Супер-героический CSS3',
-				id : 120,
-				val : 3,
-				observable : false,
-				images:[],				
-				description : 'Первая и вторая линия обороны на восточной границе Украины готовы на 80 процентов. Об этом заявил президент Украины Петр Порошенко во время посещения полигона сухопутных войск ВСУ в Житомирской области. По его словам, на границе успешно идет строительство блиндажей и фортикационных сооружений'				
-
-			},
-			{
-				name : 'Супер-героический Html5',
-				id : 102,
-				val : 4,
-				disable : false,
-				images:[
-					'images/icons/like10.png',
-					'images/icons/like9.png',
-					'images/icons/ok5.png'
-				],				
-				description : 'Первая и вторая линия обороны на восточной границе Украины готовы на 80 процентов. Об этом заявил президент Украины Петр Порошенко во время посещения полигона сухопутных войск ВСУ в Житомирской области. По его словам, на границе успешно идет строительство блиндажей и фортикационных сооружений'				
-			},
-			{
-				name : 'Супер-героический Json',
-				id : 120,
-				val : 1,
-				observable : true,
-				images:[
-					'images/icons/like10.png',
-					'images/icons/like9.png',
-					'images/icons/ok5.png'
-				],				
-				description : 'Первая и вторая линия обороны на восточной границе Украины готовы на 80 процентов. Об этом заявил президент Украины Петр Порошенко во время посещения полигона сухопутных войск ВСУ в Житомирской области. По его словам, на границе успешно идет строительство блиндажей и фортикационных сооружений'				
-
-			}
-		] 
+	
 
 
-		app.controller('ListController', function(){
-			this.elements = data;
+		app.controller('ListController', function($scope, $http){
+
+			$scope.elements = [];
+			
+			$http.get('data/data.json').success(function(data) {
+
+			    $scope.elements = data;
+
+ 			});
+
 		});
 
 
-		app.controller('ThumbsController', function(){
-			this.index = 0;
+/*		app.controller('ThumbsController', function($scope, $http){
+			$scope.index = 0;
 			this.setSrc = function(i){
-				if(this.index !== i){
-					this.index = i;
+				if($scope.index !== i){
+					$scope.index = i;
 				};
 			};			
 
 			this.setCurrent = function(i){
-				return this.index == i;
+				return $scope.index == i;
 			};
-		});
+		});*/
 
 })();
