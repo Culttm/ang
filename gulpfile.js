@@ -20,9 +20,6 @@ gulp.task('connect', function() {
 });
 
 
-// Styles
-// ===================================================
-
 
 // Compass
 gulp.task('compass', function () {
